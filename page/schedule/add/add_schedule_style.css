@@ -1,0 +1,77 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 10px 5px;
+}
+
+.form-container label {
+    font-weight: 600;
+    color: #2d3748;
+    margin-top: 10px;
+}
+
+.form-container select,
+.form-container input[type="time"],
+.form-container input[type="text"],
+.form-container textarea {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    background-color: #f7fafc;
+    color: #2d3748;
+    transition: border-color 0.2s;
+}
+
+.form-container select:focus,
+.form-container input[type="time"]:focus {
+    border-color: #3182ce;
+    outline: none;
+    background-color: #ffffff;
+}
+
+#day-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 5px;
+}
+
+#day-checkboxes label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #edf2f7;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    user-select: none;
+}
+
+#day-checkboxes input[type="checkbox"] {
+    accent-color: #3182ce;
+}
+
+.form-container button {
+    margin-top: 10px;
+    padding: 12px 18px;
+    background-color: #2b6cb0;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.form-container button:hover {
+    background-color: #2c5282;
+}
+
+#status {
+    margin-top: 15px;
+    color: #2f855a;
+    font-weight: 500;
+}

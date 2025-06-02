@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chi tiết khóa học</title>
+    <link rel="stylesheet" href="detail_sources_style.css" />
+    <link rel="stylesheet" href="../../../style/style.css" />
+    <script defer src="detail_sources_script.js"></script>
+</head>
+
+<body>
+    <nav class="sidebar">
+        <h2>📊 Admin Menu</h2>
+        <a href="../../../index.html">Home</a>
+        <a href="../sources.html" class="selectedMenu">📚 Sources</a>
+        <a href="../../users/user.html">👥 Users</a>
+        <a href="../../schedule/schedule.html">📅 Schedule</a>
+        <a href="../../staffs/staffs.html">🧑‍🏫 Staffs</a>
+    </nav>
+
+    <main class="main-content">
+        <h1>Chi tiết khóa học</h1>
+        <div class="dashboard-box">
+            <div class="info">
+                <div class="left-column">
+                    <h2 id="source-title"></h2>
+                    <img id="source-thumbnail" src="" alt="Ảnh khóa học"
+                        style="width: 400px; height: 250px; border-radius: 10px; margin-bottom: 1rem;">
+                    <p><strong>Mã khóa học:</strong> <span id="source-code"></span></p>
+                    <p><strong>Chuyên mục:</strong> <span id="source-category"></span></p>
+                    <p><strong>Học phí:</strong> $<span id="source-cost"></span></p>
+                    <p><strong>Mô tả:</strong> <span id="source-description"></span></p>
+                </div>
+                <div class="right-column">
+                    <h3>Danh sách bài học</h3>
+                    <div id="lessons-container">
+                        <!-- Danh sách bài học sẽ được render vào đây -->
+                        <div id="lesson-form" style="display: none; margin-top: 1rem;">
+                            <input type="text" id="new-title" placeholder="Tiêu đề bài học" />
+                            <input type="text" id="new-youtube" placeholder="Link YouTube" />
+                            <input type="text" id="new-description" placeholder="Mô tả" />
+                            <input type="text" id="new-exercise" placeholder="Bài tập" />
+                            <button id="submit-lesson">✅ Lưu bài học</button>
+                        </div>
+
+                        <button id="add-lesson-btn" style="margin-top: 1rem;">➕ Thêm bài học</button>
+                    </div>
+                </div>
+            </div>
+    </main>
+</body>
+
+</html>

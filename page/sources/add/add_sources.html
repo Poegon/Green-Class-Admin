@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thêm Khóa Học</title>
+  <script defer src="add_sources_script.js"></script>
+  <link rel="stylesheet" href="add_sources_style.css">
+  <link rel="stylesheet" href="../../../style/style.css">
+</head>
+
+<body>
+  <nav class="sidebar">
+    <h2>📊 Admin Menu</h2>
+    <a href="../../index.html">Home</a>
+    <a href="../sources.html" class="selectedMenu">📚 Sources</a>
+    <a href="../../users/user.html">👥 Users</a>
+    <a href="../../schedule/schedule.html">📅 Schedule</a>
+    <a href="../../staffs/staffs.html">🧑‍🏫 Staffs</a>
+  </nav>
+
+  <main class="main-content">
+    <h1>Add Sources</h1>
+    <div class="dashboard-box">
+      <div class="form-container">
+        <h2>Thêm khóa học</h2>
+  
+        <label for="title">Tên khóa học:</label>
+        <input type="text" id="title" />
+  
+        <label for="description">Mô tả:</label>
+        <textarea id="description" rows="4"></textarea>
+  
+        <label for="cost">Chi phí ($):</label>
+        <input type="number" id="cost" />
+  
+        <label for="category">Danh mục:</label>
+        <input type="text" id="category" />
+  
+        <label for="thumbnail">Ảnh đại diện (URL):</label>
+        <input type="text" id="thumbnail" />
+  
+        <button onclick="addSource()">Thêm khóa học</button>
+        <div id="status"></div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

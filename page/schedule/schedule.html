@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="schedule_script.js"></script>
+    <link rel="stylesheet" href="schedule_style.css">
+    <link rel="stylesheet" href="../../style/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Schedule</title>
+</head>
+
+<body>
+    <nav class="sidebar">
+        <h2>📊 Admin Menu</h2>
+        <a href="../../index.html">Home</a>
+        <a href="../sources/sources.html">📚 Sources</a>
+        <a href="../users/user.html">👥 Users</a>
+        <a href="../schedule/schedule.html" class="selectedMenu">📅 Schedule</a>
+        <a href="../staffs/staffs.html">🧑‍🏫 Staffs</a>
+    </nav>
+
+    <main class="main-content">
+        <h1>Thêm khóa học vào thời khóa biểu</h1>
+        <div class="dashboard-box">
+            <div style="width: 80%; margin: 30px auto; height: 400px;">
+                <canvas id="scheduleChart"></canvas>
+            </div>
+
+            <a href="add/add_schedule.html">Thêm khóa học vào thời khóa biểu</a>
+
+            <table id="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Khóa học</th>
+                        <th>Giáo viên</th>
+                        <th>Ngày</th>
+                        <th>Thời gian</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dữ liệu sẽ được thêm ở đây bằng JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+</body>
+
+</html>

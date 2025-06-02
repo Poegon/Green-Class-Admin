@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="index_script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="index_style.css">
+  <link rel="stylesheet" href="style/style.css">
+  <title>Admin Dashboard</title>
+</head>
+
+<body>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <h2>📊 Admin Menu</h2>
+    <a href="index.html" class="selectedMenu">Home</a>
+    <a href="page/sources/sources.html">📚 Sources</a>
+    <a href="page/users/user.html">👥 Users</a>
+    <a href="page/schedule/schedule.html">📅 Schedule</a>
+    <a href="page/staffs/staffs.html">🧑‍🏫 Staffs</a>
+  </nav>
+
+  <!-- Dashboard content -->
+  <main class="main-content">
+    <h1>Dashboard</h1>
+
+    <div class="stats">
+      <p class="stat">📚 Tổng khóa học <br> <span id="totalCourses">...</span></p>
+      <p class="stat">👨‍🏫 Tổng giảng viên <br> <span id="totalStaff">...</span></p>
+      <p class="stat">👥 Tổng người dùng <br> <span id="totalUsers">...</span></p>
+      <p class="stat">💰 Doanh thu ước tính <br> <span id="totalRevenue">...</span></p>
+    </div>
+
+    <div class="dashboard-boxz">
+      <div style="flex: 5;">
+        <h2>Top 10 khóa học được đăng ký nhiều nhất</h2>
+        <table id="topCoursesTable">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>Tên khóa học</th>
+              <th>Số lượt đăng ký</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div style="flex: 2;">
+        <h2>Thống kê thể loại khóa học</h2>
+        <canvas id="categoryChart" width="400" height="400"></canvas>
+      </div>
+    </div>
+  </main>
+
+</body>
+
+</html>

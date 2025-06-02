@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="add_staff_script.js"></script>
+    <link rel="stylesheet" href="add_staff_style.css">
+    <link rel="stylesheet" href="../../../style/style.css">
+    <title>Thêm nhân sự</title>
+</head>
+
+<body>
+
+    <nav class="sidebar">
+        <h2>📊 Admin Menu</h2>
+        <a href="../../../index.html">Home</a>
+        <a href="../../sources/sources.html">📚 Sources</a>
+        <a href="../../users/user.html">👥 Users</a>
+        <a href="../../schedule/schedule.html">📅 Schedule</a>
+        <a href="../staffs.html" class="selectedMenu">🧑‍🏫 Staffs</a>
+    </nav>
+
+    <main class="main-content">
+        <h1>Thêm nhân sự</h1>
+        <div class="dashboard-box">
+            <div class="form-container">
+
+                <label>First Name:</label>
+                <input type="text" id="firstname" />
+
+                <label>Last Name:</label>
+                <input type="text" id="lastname" />
+
+                <label>Mô tả:</label>
+                <textarea id="description"></textarea>
+
+                <label>Môn phụ trách (subject):</label>
+                <input type="text" id="subject" />
+
+                <label>Giới tính:</label>
+                <div class="gender-group">
+                    <label><input type="radio" name="gender" value="male" checked /> Nam</label>
+                    <label><input type="radio" name="gender" value="female" /> Nữ</label>
+                </div>
+
+                <button onclick="addStaff()">Thêm nhân sự</button>
+                <div id="status"></div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="add_schedule_script.js"></script>
+    <link rel="stylesheet" href="add_schedule_style.css">
+    <link rel="stylesheet" href="../../../style/style.css">
+    <title>Thêm khóa học vào thời khóa biểu</title>
+</head>
+
+<body>
+    <nav class="sidebar">
+        <h2>📊 Admin Menu</h2>
+        <a href="../../../index.html">Home</a>
+        <a href="../../sources/sources.html">📚 Sources</a>
+        <a href="../../users/user.html">👥 Users</a>
+        <a href="../../schedule/schedule.html" class="selectedMenu">📅 Schedule</a>
+        <a href="../../staffs/staffs.html">🧑‍🏫 Staffs</a>
+    </nav>
+
+    <main class="main-content">
+        <h1>Thêm khóa học vào thời khóa biểu</h1>
+        <div class="dashboard-box">
+            <div class="form-container">
+                <label for="staff">Chọn nhân sự phụ trách:</label>
+                <select id="staff"></select>
+
+                <label for="day">Chọn ngày:</label>
+                <div id="day-checkboxes">
+                    <label><input type="checkbox" value="monday"> Thứ 2</label>
+                    <label><input type="checkbox" value="tuesday"> Thứ 3</label>
+                    <label><input type="checkbox" value="wednesday"> Thứ 4</label>
+                    <label><input type="checkbox" value="thursday"> Thứ 5</label>
+                    <label><input type="checkbox" value="friday"> Thứ 6</label>
+                    <label><input type="checkbox" value="saturday"> Thứ 7</label>
+                    <label><input type="checkbox" value="sunday"> Chủ nhật</label>
+                </div>
+
+
+                <label for="course">Chọn khóa học:</label>
+                <select id="course"></select>
+
+                <label for="time">Chọn giờ học:</label>
+                <input type="time" id="time">
+
+                <label for="linkGgMeet">Link Google Meet:</label>
+                <input type="text" id="linkGgMeet">
+
+                <button onclick="addSchedule()">Thêm vào lịch</button>
+            </div>
+
+            <div id="status"></div>
+        </div>
+    </main>
+
+</body>
+
+</html>

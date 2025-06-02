@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="staffs_script.js"></script>
+    <link rel="stylesheet" href="staffs_style.css">
+    <link rel="stylesheet" href="../../style/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Staffs</title>
+</head>
+
+<body>
+    <nav class="sidebar">
+        <h2>📊 Admin Menu</h2>
+        <a href="../../index.html">Home</a>
+        <a href="../sources/sources.html">📚 Sources</a>
+        <a href="../users/user.html">👥 Users</a>
+        <a href="../schedule/schedule.html">📅 Schedule</a>
+        <a href="../staffs/staffs.html" class="selectedMenu">🧑‍🏫 Staffs</a>
+    </nav>
+    <main class="main-content">
+        <h1>Danh sách Nhân viên</h1>
+
+        <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+            <div>
+                <canvas id="genderChart" width="200" height="200"></canvas>
+            </div>
+            <div>
+                <canvas id="subjectChart" width="200" height="200"></canvas>
+            </div>
+        </div>
+        
+        <div class="dashboard-box">
+            <a href="add/add_staff.html">Thêm nhân sự</a>
+
+            <table id="staff-table">
+                <thead>
+                    <tr>
+                        <th>Ảnh đại diện</th>
+                        <th>Họ tên</th>
+                        <th>Gmail</th>
+                        <th>Mô tả</th>
+                        <th>Môn dạy</th>
+                        <th>Giới tính</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Nhân viên sẽ được hiển thị ở đây -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>

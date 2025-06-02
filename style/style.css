@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    min-height: 100vh;
+    background-color: #f4f6f8;
+}
+
+/* Sidebar cố định bên trái */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 220px;
+    background-color: #2d3748;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    /* Cho phép cuộn nếu menu dài */
+}
+
+.sidebar h2 {
+    margin-bottom: 30px;
+    font-size: 20px;
+    color: #edf2f7;
+}
+
+.sidebar a {
+    color: #cbd5e0;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.sidebar a:hover {
+    background-color: #4a5568;
+    color: #fff;
+}
+
+.selectedMenu {
+    background-color: #4a5568;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Main content di chuyển sang phải để tránh bị che */
+.main-content {
+    margin-left: 220px;
+    /* Phù hợp với chiều rộng sidebar */
+    padding: 30px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.main-content h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #2c5282;
+}
+
+/* Dashboard box hiển thị biểu đồ hoặc nội dung */
+.dashboard-box {
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+canvas {
+    max-width: 100%;
+    height: auto;
+}

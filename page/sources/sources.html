@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="sources_script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Thống kê khóa học</title>
+    <link rel="stylesheet" href="sources_style.css">
+    <link rel="stylesheet" href="../../style/style.css">
+</head>
+
+<body>
+    <nav class="sidebar">
+        <h2>📊 Admin Menu</h2>
+        <a href="../../index.html">Home</a>
+        <a href="../sources/sources.html" class="selectedMenu">📚 Sources</a>
+        <a href="../users/user.html">👥 Users</a>
+        <a href="../schedule/schedule.html">📅 Schedule</a>
+        <a href="../staffs/staffs.html">🧑‍🏫 Staffs</a>
+    </nav>
+
+    <main class="main-content">
+        <h1>Thống kê khóa học</h1>
+        <div class="dashboard-box">
+            <ul id="courseStatsList">
+                <!-- Các mục sẽ được render bằng JS -->
+            </ul>
+
+            <div class="chart-container">
+                <canvas id="courseChart" class="chart"></canvas>
+            </div>
+
+            <a class="btn-add" href="add/add_sources.html">Thêm khóa học</a>
+
+            <table id="source-table">
+                <thead>
+                  <tr>
+                    <th>Ảnh</th>
+                    <th>Tên khóa học</th>
+                    <th>Mô tả</th>
+                    <th>Chuyên mục</th>
+                    <th>Học phí</th>
+                    <th>Lượt đăng ký</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- JS sẽ thêm dòng tại đây -->
+                </tbody>
+              </table>
+        </div>
+    </main>
+
+</body>
+
+</html>
