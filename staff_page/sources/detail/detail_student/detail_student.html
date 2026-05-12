@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="detail_student_script.js"></script>
+    <link rel="stylesheet" href="detail_student_style.css">
+    <link rel="stylesheet" href="../../../../style/style.css">
+    <title>Chi tiết học viên - Staff</title>
+</head>
+
+
+<body>
+    <nav class="sidebar">
+        <h2>📊 Staff Menu</h2>
+        <a href="../../sources.html" class="selectedMenu">📚 Sources</a>
+        <a href="../../../schedule/schedule.html">📅 Schedule</a>
+    </nav>
+\
+
+    <main class="main-content">
+        <h1>Chi tiết học viên</h1>
+
+
+        <div class="user-info-box">
+            <h2>Thông tin học viên</h2>
+            <div id="userInfo">
+                <!-- Thông tin học viên sẽ được hiển thị ở đây -->
+            </div>
+        </div>
+
+
+        <div class="courses-box">
+            <h2>Khóa học hiện tại</h2>
+            <div id="registeredCourses">
+                <!-- Thông tin khóa học sẽ được hiển thị ở đây -->
+            </div>
+        </div>
+
+
+        <div class="progress-box">
+            <h2>Tiến độ học tập khóa học này</h2>
+            <div id="learningProgress">
+                <!-- Thanh progress sẽ được hiển thị ở đây -->
+            </div>
+        </div>
+
+
+        <div class="chart-box">
+            <h2>Biểu đồ tiến độ khóa học này</h2>
+            <canvas id="progressChart"></canvas>
+        </div>
+    </main>
+</body>
+
+
+</html>

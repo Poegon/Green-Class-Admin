@@ -8,7 +8,7 @@ fetch(usersApi)
             const tr = document.createElement('tr');
             tr.innerHTML = `
             <td>${user.id}</td>
-            <td>${user.userName}</td>
+            <td><a href="detail/detail_user.html?id=${user.id}" class="user-link">${user.userName}</a></td>
             <td>${user.password}</td>
             <td>${user.sourcesId.join(', ') || 'Không có'}</td>
           `;

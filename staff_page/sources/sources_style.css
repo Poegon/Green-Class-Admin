@@ -1,0 +1,52 @@
+#staff-sources-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 15px;
+    color: #2d3748;
+}
+
+#staff-sources-table thead {
+    background-color: #2d3748;
+}
+
+#staff-sources-table th, #staff-sources-table td {
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+#staff-sources-table th {
+    font-weight: 600;
+    color: #fff;
+}
+
+#staff-sources-table tbody tr:hover {
+    background-color: #f7fafc;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#staff-sources-table td {
+    vertical-align: middle;
+    line-height: 1.4;
+}
+
+#staff-sources-table img {
+    width: 60px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.source-link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.source-link:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}

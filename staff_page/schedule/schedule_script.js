@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (!loggedInStaff) {
         alert('Vui lòng đăng nhập trước!');
-        window.location.href = 'login.html';
+        window.location.href = '../login/login.html';
         return;
     }
 
