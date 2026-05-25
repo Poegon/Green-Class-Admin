@@ -100,6 +100,14 @@ Promise.all([
     descCell.textContent = source.description;
     row.appendChild(descCell);
 
+    // Cột trạng thái
+    const activeCell = document.createElement('td');
+    const activeBadge = document.createElement('span');
+    activeBadge.className = `status-badge ${source.active ? 'active' : 'inactive'}`;
+    activeBadge.textContent = source.active ? 'Hoạt động' : 'Tắt';
+    activeCell.appendChild(activeBadge);
+    row.appendChild(activeCell);
+
     // Cột chuyên mục
     const catCell = document.createElement('td');
     catCell.textContent = source.category;

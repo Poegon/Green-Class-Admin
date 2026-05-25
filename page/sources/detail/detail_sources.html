@@ -29,10 +29,26 @@
                     <h2 id="source-title"></h2>
                     <img id="source-thumbnail" src="" alt="Ảnh khóa học"
                         style="width: 400px; height: 250px; border-radius: 10px; margin-bottom: 1rem;">
-                    <p><strong>Mã khóa học:</strong> <span id="source-code"></span></p>
-                    <p><strong>Chuyên mục:</strong> <span id="source-category"></span></p>
-                    <p><strong>Học phí:</strong> $<span id="source-cost"></span></p>
-                    <p><strong>Mô tả:</strong> <span id="source-description"></span></p>
+
+                    <label for="title-input"><strong>Tên khóa học:</strong></label>
+                    <input type="text" id="title-input" />
+
+                    <label for="category-input"><strong>Chuyên mục:</strong></label>
+                    <input type="text" id="category-input" />
+
+                    <label for="cost-input"><strong>Học phí ($):</strong></label>
+                    <input type="number" id="cost-input" />
+
+                    <label for="description-input"><strong>Mô tả:</strong></label>
+                    <textarea id="description-input" rows="4"></textarea>
+
+                    <label for="thumbnail-input"><strong>Ảnh khóa học (URL):</strong></label>
+                    <input type="text" id="thumbnail-input" />
+
+                    <label class="checkbox-label"><input type="checkbox" id="active-input" /> Hoạt động</label>
+
+                    <button id="save-source-btn"> Lưu chỉnh sửa khóa học</button>
+                    <div id="source-status" style="margin-top: 1rem; color: green;"></div>
                 </div>
                 <div class="right-column">
                     <h3>Danh sách bài học</h3>

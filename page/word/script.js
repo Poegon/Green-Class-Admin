@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // DOM Elements
     const flashcardsContainer = document.getElementById('flashcardsContainer');
     const saveFlashcardBtn = document.getElementById('saveFlashcardBtn');
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     prevCardBtn.addEventListener('click', showPrevCard);
     nextCardBtn.addEventListener('click', showNextCard);
     searchBtn.addEventListener('click', searchFlashcards);
-    searchInput.addEventListener('keyup', function(e) {
+    searchInput.addEventListener('keyup', function (e) {
         if (e.key === 'Enter') searchFlashcards();
     });
     importBtn.addEventListener('click', () => importFile.click());
@@ -51,19 +51,41 @@ document.addEventListener('DOMContentLoaded', function() {
     // Functions
     async function saveFlashcard() {
         const title = document.getElementById('flashcardTitle').value.trim();
+        const image = document.getElementById('flashcardImage').value.trim();
         const front = document.getElementById('flashcardFront').value.trim();
         const back = document.getElementById('flashcardBack').value.trim();
         const tags = document.getElementById('flashcardTags').value.trim();
 
-        if (!title || !front || !back) {
+        if (!title || !front || !back || !image) {
             showToast('Please fill in all required fields', 'error');
             return;
         }
 
+        let audio = '';
+        try {
+            const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(front)}`);
+            const data = await response.json();
+            console.log('Dictionary API response:', data);
+            if (data[0]?.phonetics) {
+                console.log('Phonetics array:', data[0].phonetics);
+                const phonetic = data[0].phonetics.find(p => p.audio && p.audio !== '');
+                if (phonetic) {
+                    audio = phonetic.audio;
+                    console.log('Selected audio URL:', audio);
+                } else {
+                    console.log('No phonetic with audio found');
+                }
+            }
+        } catch (error) {
+            console.error('Error fetching audio:', error);
+        }
+
         const newFlashcard = {
             title,
+            image,
             front,
             back,
+            audio,
             tags: tags ? tags.split(',').map(tag => tag.trim()) : [],
             createdAt: new Date().toISOString()
         };
@@ -74,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newFlashcard)
             });
-            
+
             if (response.ok) {
                 clearForm();
                 fetchFlashcards();
@@ -90,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function clearForm() {
         document.getElementById('flashcardTitle').value = '';
+        document.getElementById('flashcardImage').value = '';
         document.getElementById('flashcardFront').value = '';
         document.getElementById('flashcardBack').value = '';
         document.getElementById('flashcardTags').value = '';
@@ -115,9 +138,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Apply search filter
         if (currentSearchTerm) {
             const searchTerm = currentSearchTerm.toLowerCase();
-            filteredFlashcards = filteredFlashcards.filter(card => 
-                card.title.toLowerCase().includes(searchTerm) || 
-                card.front.toLowerCase().includes(searchTerm) || 
+            filteredFlashcards = filteredFlashcards.filter(card =>
+                card.title.toLowerCase().includes(searchTerm) ||
+                card.front.toLowerCase().includes(searchTerm) ||
                 card.back.toLowerCase().includes(searchTerm) ||
                 card.tags.some(tag => tag.toLowerCase().includes(searchTerm))
             );
@@ -125,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Apply tag filter
         if (activeTagFilter) {
-            filteredFlashcards = filteredFlashcards.filter(card => 
+            filteredFlashcards = filteredFlashcards.filter(card =>
                 card.tags.includes(activeTagFilter)
             );
         }
@@ -149,17 +172,40 @@ document.addEventListener('DOMContentLoaded', function() {
             const flashcardElement = document.createElement('div');
             flashcardElement.className = 'flashcard';
             flashcardElement.dataset.id = card.id;
-            
+
             flashcardElement.innerHTML = `
                 <div class="flashcard-content">
                     <div class="flashcard-front">
-                        <h3 class="flashcard-title">${card.title}</h3>
+                        <img 
+                            src="${card.image}" 
+                            alt="${card.title}" 
+                            class="flashcard-image"
+                        >
+
+                        <h3 class="flashcard-title">
+                            ${card.title}
+                            ${card.audio ? `<button class="audio-btn" title="Play audio"><i class="fas fa-volume-up"></i></button>` : ''}
+                        </h3>
+
                         <p class="flashcard-body">${card.front}</p>
+
                         ${card.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                     </div>
+
                     <div class="flashcard-back">
-                        <h3 class="flashcard-title">${card.title}</h3>
+                        <img 
+                            src="${card.image}" 
+                            alt="${card.title}" 
+                            class="flashcard-image"
+                        >
+
+                        <h3 class="flashcard-title">
+                            ${card.title}
+                            ${card.audio ? `<button class="audio-btn" title="Play audio"><i class="fas fa-volume-up"></i></button>` : ''}
+                        </h3>
+
                         <p class="flashcard-body">${card.back}</p>
+
                         ${card.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                     </div>
                     <div class="flashcard-actions">
@@ -169,19 +215,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
             `;
-            
+
             flashcardsContainer.appendChild(flashcardElement);
 
             // Add event listeners to the new card
             const editBtn = flashcardElement.querySelector('.edit-btn');
             const deleteBtn = flashcardElement.querySelector('.delete-btn');
             const studyBtn = flashcardElement.querySelector('.study-btn');
+            const audioBtns = flashcardElement.querySelectorAll('.audio-btn');
 
-            flashcardElement.addEventListener('click', function(e) {
-                if (!editBtn.contains(e.target) && !deleteBtn.contains(e.target)) {
-                    this.classList.toggle('flipped');
-                }
-            });
+            // flashcardElement.addEventListener('click', function (e) {
+            //     if (!editBtn.contains(e.target) && !deleteBtn.contains(e.target) && !studyBtn.contains(e.target) && !(audioBtn && audioBtn.contains(e.target))) {
+            //         this.classList.toggle('flipped');
+            //     }
+            // });
 
             editBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -197,6 +244,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.stopPropagation();
                 startStudySession([card.id]);
             });
+
+            audioBtns.forEach(audioBtn => {
+                audioBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    console.log('Playing audio:', card.audio);
+                    const audio = new Audio(card.audio);
+                    audio.onerror = (error) => {
+                        console.error('Error playing audio:', error);
+                        showToast('Error playing audio', 'error');
+                    };
+                    audio.onloadeddata = () => {
+                        console.log('Audio loaded successfully');
+                    };
+                    audio.play().catch(err => {
+                        console.error('Playback error:', err);
+                        showToast('Error playing audio', 'error');
+                    });
+                });
+            });
         });
     }
 
@@ -205,6 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!card) return;
 
         document.getElementById('flashcardTitle').value = card.title;
+        document.getElementById('flashcardImage').value = card.image;
         document.getElementById('flashcardFront').value = card.front;
         document.getElementById('flashcardBack').value = card.back;
         document.getElementById('flashcardTags').value = card.tags.join(', ');
@@ -218,12 +285,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function deleteFlashcard(id, showConfirm = true) {
         if (showConfirm && !confirm('Are you sure you want to delete this flashcard?')) return;
-        
+
         try {
             const response = await fetch(`${API_URL}/${id}`, {
                 method: 'DELETE'
             });
-            
+
             if (response.ok) {
                 fetchFlashcards();
                 if (showConfirm) {
@@ -245,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Prepare cards for study session
-        studyFlashcards = ids 
+        studyFlashcards = ids
             ? flashcards.filter(card => ids.includes(card.id))
             : [...flashcards];
 
@@ -277,7 +344,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('studyFrontTitle').textContent = card.title;
         document.getElementById('studyFrontContent').textContent = card.front;
         document.getElementById('studyBackContent').textContent = card.back;
-        document.getElementById('progressIndicator').textContent = 
+        document.getElementById('progressIndicator').textContent =
             `${currentStudyIndex + 1}/${studyFlashcards.length}`;
     }
 
@@ -343,7 +410,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const buttons = tagFilter.querySelectorAll('button');
         buttons.forEach(button => {
             button.classList.remove('active');
-            if ((!activeTagFilter && button.textContent === 'All') || 
+            if ((!activeTagFilter && button.textContent === 'All') ||
                 (button.textContent === activeTagFilter)) {
                 button.classList.add('active');
             }
@@ -383,7 +450,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!file) return;
 
         const reader = new FileReader();
-        reader.onload = async function(e) {
+        reader.onload = async function (e) {
             try {
                 const importedCards = JSON.parse(e.target.result);
                 if (!Array.isArray(importedCards)) {

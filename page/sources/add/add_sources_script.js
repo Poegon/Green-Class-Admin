@@ -6,6 +6,7 @@ function addSource() {
     const cost = parseFloat(document.getElementById('cost').value);
     const category = document.getElementById('category').value.trim();
     const thumbnail = document.getElementById('thumbnail').value.trim();
+    const active = document.getElementById('active').checked;
 
     if (!title || !description || isNaN(cost) || !category || !thumbnail) {
         alert("Vui lòng điền đầy đủ thông tin.");
@@ -17,7 +18,9 @@ function addSource() {
         description,
         cost,
         category,
-        thumbnailSources: thumbnail
+        thumbnailSources: thumbnail,
+        active,
+        lessons: []
     };
 
     fetch(sourceApi, {
