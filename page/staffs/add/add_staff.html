@@ -26,6 +26,30 @@
         <div class="dashboard-box">
             <div class="form-container">
 
+                <label>Ảnh đại diện:</label>
+                <div class="avatar-selection-row">
+                    <div class="avatar-preview-inline">
+                        <img id="selected-avatar" src="" alt="Ảnh đã chọn" class="avatar-preview" />
+                    </div>
+                    <div class="avatar-buttons">
+                        <button type="button" id="avatar-button-existing" onclick="openAvatarPanel()">Chọn ảnh</button>
+                        <button type="button" id="avatar-button-url" onclick="showAvatarUrlInput()">Nhập link</button>
+                    </div>
+                </div>
+
+                <div id="avatar-panel" class="avatar-panel hidden">
+                    <div class="avatar-panel-header">
+                        <span>Chọn ảnh có sẵn</span>
+                        <button type="button" class="close-avatar-panel" onclick="hideAvatarPanel()">×</button>
+                    </div>
+                    <div id="avatar-list" class="avatar-list"></div>
+                </div>
+
+                <div id="avatar-url-section" class="hidden">
+                    <label>Link ảnh (URL):</label>
+                    <input type="text" id="avatar-url" placeholder="Nhập URL ảnh" oninput="updateAvatarUrl()" />
+                </div>
+
                 <label>First Name:</label>
                 <input type="text" id="firstname" />
 
@@ -44,7 +68,7 @@
                     <label><input type="radio" name="gender" value="female" /> Nữ</label>
                 </div>
 
-                <button onclick="addStaff()">Thêm nhân sự</button>
+                <button onclick="addOrUpdateStaff()">Thêm nhân sự</button>
                 <div id="status"></div>
             </div>
         </div>

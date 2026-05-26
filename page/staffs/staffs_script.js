@@ -32,7 +32,11 @@ fetch(staffApi)
 
             // Description
             const descCell = document.createElement('td');
-            descCell.textContent = staff.description;
+            descCell.className = 'description-cell';
+            const descWrapper = document.createElement('div');
+            descWrapper.className = 'description-text';
+            descWrapper.textContent = staff.description;
+            descCell.appendChild(descWrapper);
             row.appendChild(descCell);
 
             // Subject
@@ -45,6 +49,15 @@ fetch(staffApi)
             const genderText = staff.gender ? 'Nữ' : 'Nam';
             genderCell.textContent = genderText;
             row.appendChild(genderCell);
+
+            // Action
+            const actionCell = document.createElement('td');
+            const editLink = document.createElement('a');
+            editLink.href = `add/add_staff.html?id=${staff.id}`;
+            editLink.textContent = 'Chỉnh sửa';
+            editLink.className = 'edit-link';
+            actionCell.appendChild(editLink);
+            row.appendChild(actionCell);
 
             // Đếm giới tính
             staff.gender ? countFemale++ : countMale++;
